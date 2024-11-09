@@ -1,15 +1,22 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using rscgQueryables_testconsole;
+using System.Linq;
 
 
 Console.WriteLine("Hello, World!");
 
-var persons = new Person[]
+var students = new Student[]
 {
-    new Person { FirstName = "John", LastName = "Doe", Age = 25 },
-    new Person { FirstName = "Ignat", LastName = "Andrei", Age = 55 },
+    new Student { FirstName = "John", LastName = "Doe", StartYear = 1935},
+    new Student { FirstName = "Ignat", LastName = "Andrei", StartYear = 1989 },
 };
 
-var orderedExplicitly = persons.OrderBy(p => p.FirstName).ToArray();
-var orderedImplicitly = persons.OrderBy("firStnaMe").ToArray();
-var orderedImplicitly2 = persons.AsQueryable().OrderBy("fIrsTnAme").ToArray();
+var orderedExplicitly = students.OrderBy(p => p.FirstName).ToArray();
+var orderedImplicitly = students.OrderBy("firStnaMe").ToArray();
+var orderedImplicitly2 = students.AsQueryable().OrderBy("fIrsTnAme").ToArray();
+
+
+//Search by property name
+
+var search = students.AsQueryable().Where(Student_.Where_Expr( "firstName", rscg_queryablesCommon.WhereOperator.Equal, "John")).ToArray();
+Console.WriteLine("found : "+search.Length);

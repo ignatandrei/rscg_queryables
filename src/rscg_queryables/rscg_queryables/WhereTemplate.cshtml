@@ -3,6 +3,8 @@
     string fullName = Model.FullName    ;
     var fullNameToBeUsed = Model.FullNameToBeUsed;
     var quote = '"';
+    var strExpr = $"static System.Linq.Expressions.Expression < Func < {fullName},bool>>";
+    
 }
 
 public static class ExtensionsWhere_@(fullNameToBeUsed){
@@ -10,42 +12,84 @@ public static class ExtensionsWhere_@(fullNameToBeUsed){
 @foreach(var item in Model.PropertiesGetWithType)
 {
     <text>
-        private static Func<@fullName,bool>
+        internal @strExpr
+        @(item.Item1)_Expr_Equal(@item.Item2 argument) => (a => a.@(item.Item1)== argument);
+
+        internal static Func<@fullName,bool>
             @(item.Item1)_Equal(@item.Item2 argument) => (a => a.@(item.Item1)== argument);
-        private static Func<@fullName,bool>
+
+        internal @strExpr
+        @(item.Item1)_Expr_NotEqual(@item.Item2 argument) => (a => a.@(item.Item1) != argument);
+
+        internal static Func<@fullName,bool>
                 @(item.Item1)_NotEqual(@item.Item2 argument) => (a => a.@(item.Item1) != argument);
 
     </text>    
 }
 
+   
+
+}
+public static class @(Model.Name)_{
+
 @foreach (var item in Model.PropertiesGetGroupedAfterType)
 {
     var propType = item.Key;
     <text>
-        public static Func<@fullName,bool>
-            @(Model.Name)_Where(string propertyName,rscg_queryablesCommon.WhereOperator operatorWhere, @propType argument)
-        {
-            @foreach(var propName in item.Value){
+        public @strExpr
+        Where_Expr(string propertyName,rscg_queryablesCommon.WhereOperator operatorWhere, @propType argument)
+            {
+            @foreach (var propName in item.Value)
+            {
                 <text>
                     if(string.Equals(propertyName,  @(quote + propName + quote), StringComparison.OrdinalIgnoreCase)){
                     switch(operatorWhere){
-                            case rscg_queryablesCommon.WhereOperator.Equal:
-                                return @(propName)_Equal( argument);
-                            case rscg_queryablesCommon.WhereOperator.NotEqual:
-                                return @(propName)_NotEqual( argument);
-                            default:
+                    case rscg_queryablesCommon.WhereOperator.Equal:
+                    return ExtensionsWhere_@(fullNameToBeUsed).@(propName)_Expr_Equal( argument);
+                    case rscg_queryablesCommon.WhereOperator.NotEqual:
+                    return ExtensionsWhere_@(fullNameToBeUsed).@(propName)_Expr_NotEqual( argument);
+                    default:
                     throw new ArgumentException($"Operator {operatorWhere} not found");
-                        }//end switch
+                    }//end switch
                     }//end if @propName
-                        
+
                 </text>
-                
+
             }
 
             throw new ArgumentException("Property "+ propertyName +" not found for @propType type");
-        }
+            }
+
+
+
+
+
+        public static Func<@fullName,bool>
+            Where(string propertyName,rscg_queryablesCommon.WhereOperator operatorWhere, @propType argument)
+            {
+            @foreach (var propName in item.Value)
+            {
+                <text>
+                    if(string.Equals(propertyName,  @(quote + propName + quote), StringComparison.OrdinalIgnoreCase)){
+                    switch(operatorWhere){
+                    case rscg_queryablesCommon.WhereOperator.Equal:
+                    return ExtensionsWhere_@(fullNameToBeUsed).@(propName)_Equal( argument);
+                    case rscg_queryablesCommon.WhereOperator.NotEqual:
+                    return ExtensionsWhere_@(fullNameToBeUsed).@(propName)_NotEqual( argument);
+                    default:
+                    throw new ArgumentException($"Operator {operatorWhere} not found");
+                    }//end switch
+                    }//end if @propName
+
+                </text>
+
+            }
+
+            throw new ArgumentException("Property "+ propertyName +" not found for @propType type");
+            }
+
     </text>
 }
-    
+
 
 }

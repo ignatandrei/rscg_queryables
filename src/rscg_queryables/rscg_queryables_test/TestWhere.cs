@@ -10,12 +10,14 @@ namespace rscg_queryables_test;
 [TestClass]
 public class TestWhere
 {
-    [TestMethod]
-    public void TestOrderBy()
+    [TestMethod] 
+    public void TestWhereSimple()
     {
         var p = new ListOfPersons();
         var arr = p.ArrPersons(); 
-        Person[] personFound = arr.Where(ExtensionsWhere_rscg_queryables_test_Person.Person_Where("Age", rscg_queryablesCommon.WhereOperator.Equal, 55)).ToArray();
+        Person[] personFound = arr.Where(Person_.Where("Age", rscg_queryablesCommon.WhereOperator.Equal, 55)).ToArray();
         personFound.Should().HaveCount(1); 
+        
     }
+
 }
