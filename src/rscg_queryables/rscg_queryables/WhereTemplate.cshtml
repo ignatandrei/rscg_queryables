@@ -1,0 +1,48 @@
+@inherits RazorBlade.PlainTextTemplate<rscg_queryables.DataFromExposeClass>
+@{
+    string fullName = Model.FullName    ;
+    var fullNameToBeUsed = Model.FullNameToBeUsed;
+    
+}
+
+public static class ExtensionsWhere_@(fullNameToBeUsed){
+    
+@foreach(var item in Model.PropertiesGetWithType)
+{
+    <text>
+        private static Func<@fullName,bool>
+            @(item.Item1)_Equal(@item.Item2 argument) => (a => a.@(item.Item1)== argument);
+        private static Func<@fullName,bool>
+                @(item.Item1)_NotEqual(@item.Item2 argument) => (a => a.@(item.Item1) != argument);
+
+    </text>    
+}
+
+@foreach (var item in Model.PropertiesGetGroupedAfterType)
+{
+    var propType = item.Key;
+    <text>
+        public static Func<@fullName,bool>
+            @(Model.Name)_Where(string propertyName,rscg_queryablesCommon.WhereOperator operator, @propType argument)
+        {
+            @foreach(var propName in item.Value){
+                <text>
+                    if(string.Equals(propertyName, @propName, StringComparison.OrdinalIgnoreCase)){
+                        switch(operator){
+                            case rscg_queryablesCommon.WhereOperator.Equal:
+                                return @(propName)_Equal( argument);
+                            case rscg_queryablesCommon.WhereOperator.NotEqual:
+                                return @(propName)_NotEqual( argument);                            
+                    }
+                        
+                </text>
+                
+            }
+
+            throw new ArgumentException("Property "+ property +"not found for @propType type");
+        }
+    </text>
+}
+    
+
+}

@@ -2,6 +2,7 @@
 
 namespace rscgQueryables_testconsole;
 [MakeSortable]
+[MakeWhere]
 public class Person
 {
     public string FirstName { get; set; } = string.Empty;

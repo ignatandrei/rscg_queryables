@@ -5,7 +5,7 @@ using System.Collections.Immutable;
 namespace rscg_queryables
 {
     [Generator]
-    public class GenerateQueryables : IIncrementalGenerator
+    public class GenerateOrderBy : IIncrementalGenerator
     {
         public void Initialize(IncrementalGeneratorInitializationContext context)
         {
@@ -30,7 +30,7 @@ ExecuteSort(spc, data));
             {
                 var c = new SortableTemplate(classData);
                 var text = c.Render();
-                spc.AddSource($"{classData.type.Name}_sortable.cs", text);
+                spc.AddSource($"{classData.FullNameToBeUsed}_sortable.cs", text);
             }
         }
 

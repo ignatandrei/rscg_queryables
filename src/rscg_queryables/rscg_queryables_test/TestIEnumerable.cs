@@ -28,7 +28,6 @@ public class TestIEnumerable
             .ToArray();
         
         arrOK.Should().ContainInConsecutiveOrder(arr);
-
         arr = new List<Person>(p.ArrPersons())
             .OrderBy("fIrstName")
             .ThenByDescending("LastName")

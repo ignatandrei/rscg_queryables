@@ -7,9 +7,10 @@
         dictPropGet += "{" + quote + item + quote + ", " + quote + item + quote + " },\r\n";
     }
     string fullName = Model.FullName;
+    var fullNameToBeUsed = Model.FullNameToBeUsed;
 }
 
-public static class ExtensionsSortable{
+public static partial class ExtensionsSortable_@(fullNameToBeUsed) {
     
     #region Enumerable
     public static System.Linq.IOrderedEnumerable<@fullName> OrderBy
