@@ -2,7 +2,7 @@
 @{
     string fullName = Model.FullName    ;
     var fullNameToBeUsed = Model.FullNameToBeUsed;
-    
+    var quote = '"';
 }
 
 public static class ExtensionsWhere_@(fullNameToBeUsed){
@@ -23,23 +23,26 @@ public static class ExtensionsWhere_@(fullNameToBeUsed){
     var propType = item.Key;
     <text>
         public static Func<@fullName,bool>
-            @(Model.Name)_Where(string propertyName,rscg_queryablesCommon.WhereOperator operator, @propType argument)
+            @(Model.Name)_Where(string propertyName,rscg_queryablesCommon.WhereOperator operatorWhere, @propType argument)
         {
             @foreach(var propName in item.Value){
                 <text>
-                    if(string.Equals(propertyName, @propName, StringComparison.OrdinalIgnoreCase)){
-                        switch(operator){
+                    if(string.Equals(propertyName,  @(quote + propName + quote), StringComparison.OrdinalIgnoreCase)){
+                    switch(operatorWhere){
                             case rscg_queryablesCommon.WhereOperator.Equal:
                                 return @(propName)_Equal( argument);
                             case rscg_queryablesCommon.WhereOperator.NotEqual:
-                                return @(propName)_NotEqual( argument);                            
-                    }
+                                return @(propName)_NotEqual( argument);
+                            default:
+                    throw new ArgumentException($"Operator {operatorWhere} not found");
+                        }//end switch
+                    }//end if @propName
                         
                 </text>
                 
             }
 
-            throw new ArgumentException("Property "+ property +"not found for @propType type");
+            throw new ArgumentException("Property "+ propertyName +" not found for @propType type");
         }
     </text>
 }

@@ -6,7 +6,7 @@ public class ListOfPersons
 {
     new Person { FirstName = "John", LastName = "Doe", Age = 25 },
     new Person { FirstName = "Ignat", LastName = "Andrei", Age = 55 },
-        new Person { FirstName = "Ignat", LastName = "Andreea", Age = 55 },
+        new Person { FirstName = "Ignat", LastName = "Andreea", Age = 17},
 
 };
     public Person[] ArrPersons()
