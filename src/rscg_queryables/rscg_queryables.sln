@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rscg_queryables", "rscg_queryables\rscg_queryables.csproj", "{758E839D-89F7-4619-9EF5-0881BBCBE08A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "rscg_queryables", "rscg_queryables\rscg_queryables.csproj", "{758E839D-89F7-4619-9EF5-0881BBCBE08A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rscg_queryablesCommon", "rscg_queryablesCommon\rscg_queryablesCommon.csproj", "{A2AAB61C-BBA3-49D6-BCF6-E20724B22F2E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "rscg_queryablesCommon", "rscg_queryablesCommon\rscg_queryablesCommon.csproj", "{A2AAB61C-BBA3-49D6-BCF6-E20724B22F2E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rscgQueryables_testconsole", "rscgQueryables_testconsole\rscgQueryables_testconsole.csproj", "{BB9A087C-3BA5-4436-8B18-4EBD21984C48}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "rscgQueryables_testconsole", "rscgQueryables_testconsole\rscgQueryables_testconsole.csproj", "{BB9A087C-3BA5-4436-8B18-4EBD21984C48}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "rscg_queryables_test", "rscg_queryables_test\rscg_queryables_test.csproj", "{5E78DACE-CF56-4D44-9223-DCEBECC77A0A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{BB9A087C-3BA5-4436-8B18-4EBD21984C48}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB9A087C-3BA5-4436-8B18-4EBD21984C48}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB9A087C-3BA5-4436-8B18-4EBD21984C48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E78DACE-CF56-4D44-9223-DCEBECC77A0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E78DACE-CF56-4D44-9223-DCEBECC77A0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E78DACE-CF56-4D44-9223-DCEBECC77A0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E78DACE-CF56-4D44-9223-DCEBECC77A0A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

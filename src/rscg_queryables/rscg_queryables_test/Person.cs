@@ -1,6 +1,7 @@
-﻿using rscg_queryablesCommon;
+﻿
+using rscg_queryablesCommon;
 
-namespace rscgQueryables_testconsole;
+namespace rscg_queryables_test;
 [MakeSortable]
 public class Person
 {

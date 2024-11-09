@@ -11,7 +11,7 @@ namespace rscg_queryables
         {
             var classesToApplySortable = context.SyntaxProvider.ForAttributeWithMetadataName(
 "rscg_queryablesCommon.MakeSortableAttribute",
-IsAppliedOnMethod,
+IsAppliedOnClassOrRecord,
 FindAttributeDataExposeClass
 )
 .Collect()
@@ -34,11 +34,11 @@ ExecuteSort(spc, data));
             }
         }
 
-        private static bool IsAppliedOnMethod(
+        private static bool IsAppliedOnClassOrRecord(
     SyntaxNode syntaxNode,
     CancellationToken cancellationToken)
         {
-            var isOK = syntaxNode is ClassDeclarationSyntax;
+            var isOK = syntaxNode is ClassDeclarationSyntax ||  syntaxNode is RecordDeclarationSyntax;
             return isOK;
 
         }
