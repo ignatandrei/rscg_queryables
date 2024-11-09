@@ -1,0 +1,173 @@
+@inherits RazorBlade.PlainTextTemplate<rscg_queryables.DataFromExposeClass>
+@{
+    string dictPropGet = "";
+    var quote= '"';
+    foreach (var item in Model.PropertiesGet)
+    {
+        dictPropGet += "{" + quote + item + quote + ", " + quote + item + quote + " },\r\n";
+    }
+    string fullName = Model.FullName;
+}
+
+public static class ExtensionsSortable{
+    
+    #region Enumerable
+    public static System.Linq.IOrderedEnumerable<@fullName> OrderBy
+    (
+    this IEnumerable<@fullName>
+        source, string propertyName
+    )
+    {
+
+        return OrderByAscDesc(source,propertyName,true);
+    }
+        public static System.Linq.IOrderedEnumerable<@fullName>
+            OrderByDescending
+            (
+            this IEnumerable<@fullName>
+                source, string propertyName
+                )
+                {
+
+                return OrderByAscDesc(source,propertyName,false);
+                }
+    public static System.Linq.IOrderedEnumerable<@fullName> OrderByAscDesc
+    (
+     this IEnumerable<@fullName> source, string propertyName, bool Ascending
+    )
+   {
+                @foreach(var item in Model.PropertiesGet)
+                {
+                    string propertyName = quote+item+quote;
+                    <text>
+                        if(string.Equals(propertyName, @propertyName, StringComparison.OrdinalIgnoreCase)){
+                            if(Ascending)
+                                return source.OrderBy(x => x.@item);
+                            else
+                                return source.OrderByDescending(x => x.@item);                            
+                        }
+                    </text>
+                }
+                throw new ArgumentException($"Property {propertyName} not found", propertyName);
+    }
+
+    public static System.Linq.IOrderedEnumerable<@fullName> ThenByAscDesc
+    (
+     this IOrderedEnumerable<@fullName> source, string propertyName, bool Ascending
+    )
+   {
+                @foreach(var item in Model.PropertiesGet)
+                {
+                    string propertyName = quote+item+quote;
+                    <text>
+                        if(string.Equals(propertyName, @propertyName, StringComparison.OrdinalIgnoreCase)){
+                            if(Ascending)
+                                return source.ThenBy(x => x.@item);
+                            else
+                                return source.ThenByDescending(x => x.@item);                            
+                        }
+                    </text>
+                }
+                throw new ArgumentException($"Property {propertyName} not found", propertyName);
+    }
+    public static System.Linq.IOrderedEnumerable<@fullName> ThenBy
+    (
+    this IOrderedEnumerable<@fullName>
+        source, string propertyName
+    )
+    {
+
+        return ThenByAscDesc(source,propertyName,true);
+    }
+    public static System.Linq.IOrderedEnumerable<@fullName> ThenByDescending
+    (
+    this IOrderedEnumerable<@fullName>
+        source, string propertyName
+    )
+    {
+
+        return ThenByAscDesc(source,propertyName,false);
+    }
+
+    #endregion 
+
+#region Queryable
+    public static System.Linq.IOrderedQueryable<@fullName> OrderBy
+    (
+    this IQueryable<@fullName>
+        source, string propertyName
+    )
+    {
+
+        return OrderByAscDesc(source,propertyName,true);
+    }
+        public static System.Linq.IOrderedQueryable<@fullName>
+            OrderByDescending
+            (
+            this IQueryable<@fullName>
+                source, string propertyName
+                )
+                {
+
+                return OrderByAscDesc(source,propertyName,false);
+                }
+    public static System.Linq.IOrderedQueryable<@fullName> OrderByAscDesc
+    (
+     this IQueryable<@fullName> source, string propertyName, bool Ascending
+    )
+   {
+                @foreach(var item in Model.PropertiesGet)
+                {
+                    string propertyName = quote+item+quote;
+                    <text>
+                        if(string.Equals(propertyName, @propertyName, StringComparison.OrdinalIgnoreCase)){
+                            if(Ascending)
+                                return source.OrderBy(x => x.@item);
+                            else
+                                return source.OrderByDescending(x => x.@item);                            
+                        }
+                    </text>
+                }
+                throw new ArgumentException($"Property {propertyName} not found", propertyName);
+    }
+    public static System.Linq.IOrderedQueryable<@fullName> ThenByAscDesc
+    (
+     this IOrderedQueryable<@fullName> source, string propertyName, bool Ascending
+    )
+   {
+                @foreach(var item in Model.PropertiesGet)
+                {
+                    string propertyName = quote+item+quote;
+                    <text>
+                        if(string.Equals(propertyName, @propertyName, StringComparison.OrdinalIgnoreCase)){
+                            if(Ascending)
+                                return source.ThenBy(x => x.@item);
+                            else
+                                return source.ThenByDescending(x => x.@item);                            
+                        }
+                    </text>
+                }
+                throw new ArgumentException($"Property {propertyName} not found", propertyName);
+    }
+    public static System.Linq.IOrderedQueryable<@fullName> ThenBy
+    (
+    this IOrderedQueryable<@fullName>
+        source, string propertyName
+    )
+    {
+
+        return ThenByAscDesc(source,propertyName,true);
+    }
+    public static System.Linq.IOrderedQueryable<@fullName> ThenByDescending
+    (
+    this IOrderedQueryable<@fullName>
+        source, string propertyName
+    )
+    {
+
+        return ThenByAscDesc(source,propertyName,false);
+    }
+
+    #endregion 
+
+}
