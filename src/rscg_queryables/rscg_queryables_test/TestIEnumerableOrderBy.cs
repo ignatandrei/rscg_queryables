@@ -4,8 +4,17 @@ using System.Collections.Generic;
 namespace rscg_queryables_test;
 
 [TestClass]
-public class TestIEnumerable
+public class TestIEnumerableOrderBy
 {
+    [TestMethod]
+    public void TestOrderByAscDesc()
+    {
+        var p = new ListOfPersons();
+        var arr = new List<Person>(p.ArrPersons()).OrderByAscDesc("fIrstName",true).ToArray();
+        arr.Should().BeInAscendingOrder(it => it.FirstName);
+        arr = arr.OrderByAscDesc("fIrstName",false).ToArray();
+        arr.Should().BeInDescendingOrder(it => it.FirstName);
+    }
     [TestMethod]
     public void TestOrderBy()
     {

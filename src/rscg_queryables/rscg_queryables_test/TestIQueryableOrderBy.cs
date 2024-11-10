@@ -4,8 +4,19 @@ using System.Linq.Expressions;
 
 namespace rscg_queryables_test;
 [TestClass]
-public class TestIQueryable
+public class TestIQueryableOrderBy
 {
+    [TestMethod]
+    public void TestOrderByAscDesc()
+    {
+        var p = new ListOfPersons();
+        var arr = p.QueryPersons().OrderByAscDesc("fIrstName",true).ToArray();
+        arr.Should().BeInAscendingOrder(it => it.FirstName);
+
+        arr = arr.OrderByAscDesc("fIrstName",false).ToArray();
+        arr.Should().BeInDescendingOrder(it => it.FirstName);
+    }
+
     [TestMethod]
     public void TestOrderBy()
     {
