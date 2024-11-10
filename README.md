@@ -1,13 +1,14 @@
 
 # rscg_queryables
 
-This is a Roslyn Code Generator that generates extension methods for sorting and filtering IEnumerable and IQueryable , given a class .
+`rscg_queryables` is a Roslyn Code Generator designed to generate extension methods for sorting and filtering `IEnumerable` and `IQueryable` collections based on a given class.
 
 
 
 ## Sorting how the user wants in frontend  - description
 
-Let's say that we have to display a list of Persons and sort them by different properties. The user should be able to choose the property and the order of sorting.
+Consider a scenario where we need to display a list of `Person` objects and allow the user to sort them by various properties. The user should have the ability to select the property and the sorting order.
+
 ```csharp
 public class Person
 {
@@ -25,9 +26,7 @@ public class Person
 }
 ```
 
-
-When data comes over HTTP , it is often in the form of a string object. 
-If we want to sort after first name descending we should send something like this
+When data is transmitted over HTTP, it is often in the form of a string object. To sort by first name in descending order, the query string should look like this:
 
 ```json
 orderBy=FirstName&Asc=false
