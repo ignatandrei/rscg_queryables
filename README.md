@@ -80,6 +80,62 @@ if(queryString.ContainsKey("orderBy"))
 This should be done for everything that implements IEnumerable or IQueryable.
 
 
+
+## Filtering Based on User Preferences - Description
+
+Consider a scenario where we need to display a list of `Person` objects and allow the user to filter them by various properties. The user should have the ability to select the property, the filter criteria, and the filter operator (equal or different).
+
+When data is transmitted over HTTP, it is often in the form of a string object. To filter by first name where the value is "John", the query string should look like this:
+
+```json
+filterBy=FirstName&filterOperator=equal&filterValue=John
+```
+
+In the backend code, we need to parse the query string and apply the appropriate filtering logic.
+
+```csharp
+if (queryString.ContainsKey("filterBy") && queryString.ContainsKey("filterOperator") && queryString.ContainsKey("filterValue"))
+{
+    string filterBy = queryString["filterBy"];
+    string filterOperator = queryString["filterOperator"];
+    string filterValue = queryString["filterValue"];
+    if (filterBy == "FirstName")
+    {
+        if (filterOperator == "equal")
+        {
+            persons = persons.Where(p => p.FirstName == filterValue);
+        }
+        else if (filterOperator == "different")
+        {
+            persons = persons.Where(p => p.FirstName != filterValue);
+        }
+    }
+    // Do the same for other properties: LastName, Age, FullName
+}
+```
+
+## The Solution
+
+With `rscg_queryables`, you can achieve this in a more elegant and efficient manner.
+
+```csharp
+if (queryString.ContainsKey("filterBy") && queryString.ContainsKey("filterOperator") && queryString.ContainsKey("filterValue"))
+{
+    string filterBy = queryString["filterBy"];
+    string filterOperator = queryString["filterOperator"] == "equal"?WhereOperator.Equal:WhereOperator.Different;
+    string filterValue = queryString["filterValue"];
+    persons = persons.Where(filterBy, filterOperator, filterValue);
+    
+}
+```
+
+This approach can be applied to any collection that implements `IEnumerable` or `IQueryable`.
+
+## Other Roslyn Code Generators
+
+For more Roslyn Source Code Generators, visit [RSCG Examples](https://ignatandrei.github.io/RSCG_Examples/v2/docs/rscg-examples).
+
+
 ## Other Roslyn Code Generators
 
 See other RSCG at https://ignatandrei.github.io/RSCG_Examples/v2/docs/rscg-examples 
