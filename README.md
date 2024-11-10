@@ -1,6 +1,15 @@
 
 # rscg_queryables
 
+
+[![NuGet](https://img.shields.io/nuget/v/rscg_queryables.svg)](https://www.nuget.org/packages/rscg_queryables)
+
+[![NuGet](https://img.shields.io/nuget/v/rscg_queryablesCommon.svg)](https://www.nuget.org/packages/rscg_queryablesCommon)
+
+
+[![GitHub Actions](https://github.com/ignatandrei/rscg_queryables/actions/workflows/dotnet.yml/badge.svg)](https://github.com/ignatandrei/rscg_queryables/actions/workflows/dotnet.yml)
+
+
 `rscg_queryables` is a Roslyn Code Generator designed to generate extension methods for sorting and filtering `IEnumerable` and `IQueryable` collections based on a given class.
 
 
