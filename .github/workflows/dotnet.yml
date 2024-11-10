@@ -1,6 +1,7 @@
 name: compile and deploy with tag v*
 
 on:
+  workflow_dispatch:
   push:
     branches: [ "main" ]
     tags: [ 'v*' ] # Listen for tag pushes that match version tags
