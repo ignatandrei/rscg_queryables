@@ -118,6 +118,36 @@ if (queryString.ContainsKey("filterBy") && queryString.ContainsKey("filterOperat
 
 With `rscg_queryables`, you can achieve this in a more elegant and efficient manner.
 
+1. add the  nugets to your project
+
+```xml
+	<ItemGroup>
+		<PackageReference  Include="rscg_queryablesCommon" Version="2024.1110.1054" />
+		<PackageReference Include="rscg_queryables" Version="2024.1110.1054"  OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+	</ItemGroup>
+```
+
+Optional see the code generated
+```xml
+	<PropertyGroup>
+		<EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+		<CompilerGeneratedFilesOutputPath>$(BaseIntermediateOutputPath)\GX</CompilerGeneratedFilesOutputPath>
+	</PropertyGroup>
+```
+
+2. Modify the `Person` class to add the `rscg_queryables` attribute.
+
+```csharp
+[MakeSortable]
+[MakeWhere]
+public class Person
+{
+    //same code as above, omitted for brevity
+}
+```
+
+3. Use the overloaded `Where` method to filter the collection based on the query string.
+
 ```csharp
 if (queryString.ContainsKey("filterBy") && queryString.ContainsKey("filterOperator") && queryString.ContainsKey("filterValue"))
 {
