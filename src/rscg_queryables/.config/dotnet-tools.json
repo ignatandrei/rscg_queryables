@@ -8,6 +8,20 @@
         "watch2"
       ],
       "rollForward": false
+    },
+    "run-script": {
+      "version": "0.6.0",
+      "commands": [
+        "r"
+      ],
+      "rollForward": false
+    },
+    "netpackageanalyzerconsole": {
+      "version": "8.2024.1025.925",
+      "commands": [
+        "PackageAnalyzer"
+      ],
+      "rollForward": false
     }
   }
 }

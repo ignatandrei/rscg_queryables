@@ -18,5 +18,11 @@ var orderedImplicitly2 = students.AsQueryable().OrderBy("fIrsTnAme").ToArray();
 
 //Search by property name
 
-var search = students.AsQueryable().Where(Student_.Where_Expr( "firstName", rscg_queryablesCommon.WhereOperator.Equal, "John")).ToArray();
+var search = students.AsQueryable().Where("firstName", rscg_queryablesCommon.WhereOperator.Equal, "John").ToArray();
+
+Console.WriteLine("found : " + search.Length);
+
+search = students.AsQueryable().Where(Student_.Where_Expr( "firstName", rscg_queryablesCommon.WhereOperator.Equal, "John")).ToArray();
 Console.WriteLine("found : "+search.Length);
+
+

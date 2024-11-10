@@ -36,6 +36,12 @@ public static class @(Model.Name)_{
 {
     var propType = item.Key;
     <text>
+        public static System.Linq.IQueryable<@Model.FullName>
+            Where(this System.Linq.IQueryable<@Model.FullName> original,
+                string propertyName,rscg_queryablesCommon.WhereOperator operatorWhere, @propType argument)
+        {
+            return original.Where(Where_Expr(propertyName, operatorWhere, argument));
+        }
         public @strExpr
         Where_Expr(string propertyName,rscg_queryablesCommon.WhereOperator operatorWhere, @propType argument)
             {
