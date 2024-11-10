@@ -169,10 +169,7 @@ This approach can be applied to any collection that implements `IEnumerable` or 
 
 ## Other Roslyn Code Generators
 
-For more Roslyn Source Code Generators, visit [RSCG Examples](https://ignatandrei.github.io/RSCG_Examples/v2/docs/rscg-examples).
+For more Roslyn Source Code Generators, visit [RSCG Examples https://ignatandrei.github.io/RSCG_Examples/v2/docs/rscg-examples](https://ignatandrei.github.io/RSCG_Examples/v2/docs/rscg-examples).
 
 
-## Other Roslyn Code Generators
-
-See other RSCG at https://ignatandrei.github.io/RSCG_Examples/v2/docs/rscg-examples 
 
