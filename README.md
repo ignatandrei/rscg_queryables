@@ -128,8 +128,8 @@ With `rscg_queryables`, you can achieve this in a more elegant and efficient man
 
 ```xml
 	<ItemGroup>
-		<PackageReference  Include="rscg_queryablesCommon" Version="2024.1110.1815" />
-		<PackageReference Include="rscg_queryables" Version="2024.1110.1815"  OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+		<PackageReference  Include="rscg_queryablesCommon" Version="2024.1111.1910" />
+		<PackageReference Include="rscg_queryables" Version="2024.1111.1910"  OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
 	</ItemGroup>
 ```
 
