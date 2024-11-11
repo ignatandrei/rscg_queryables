@@ -9,10 +9,18 @@
     string fullName = Model.FullName;
     var fullNameToBeUsed = Model.FullNameToBeUsed;
 }
-
+/// <summary>
+/// This static partial class contains extension methods for sorting collections of @Model.Name objects.
+/// </summary>
 public static partial class ExtensionsSortable_@(fullNameToBeUsed) {
     
     #region Enumerable
+        /// <summary>
+    /// Orders the elements of a sequence in ascending order according to a specified property name.
+    /// </summary>
+    /// <param name="source">The sequence of @Model.Name objects to order.</param>
+    /// <param name="propertyName">The name of the property to sort by.</param>
+    /// <returns>An IOrderedEnumerable of @Model.Name objects ordered by the specified property.</returns>
     public static System.Linq.IOrderedEnumerable<@fullName> OrderBy
     (
     this IEnumerable<@fullName>
@@ -22,6 +30,12 @@ public static partial class ExtensionsSortable_@(fullNameToBeUsed) {
 
         return OrderByAscDesc(source,propertyName,true);
     }
+    /// <summary>
+    /// Orders the elements of a sequence in descending order according to a specified property name.
+    /// </summary>
+    /// <param name="source">The sequence of @Model.Name objects to order.</param>
+    /// <param name="propertyName">The name of the property to sort by.</param>
+    /// <returns>An IOrderedEnumerable of @Model.Name objects ordered by the specified property.</returns>
         public static System.Linq.IOrderedEnumerable<@fullName>
             OrderByDescending
             (
@@ -32,6 +46,15 @@ public static partial class ExtensionsSortable_@(fullNameToBeUsed) {
 
                 return OrderByAscDesc(source,propertyName,false);
                 }
+
+    /// <summary>
+    /// Orders the elements of a sequence in ascending or descending order according to a specified property name.
+    /// </summary>
+    /// <param name="source">The sequence of @Model.Name objects to order.</param>
+    /// <param name="propertyName">The name of the property to sort by.</param>
+    /// <param name="Ascending">True to order in ascending order; false to order in descending order.</param>
+    /// <returns>An IOrderedEnumerable of @Model.Name objects ordered by the specified property.</returns>
+ 
     public static System.Linq.IOrderedEnumerable<@fullName> OrderByAscDesc
     (
      this IEnumerable<@fullName> source, string propertyName, bool Ascending
@@ -51,7 +74,13 @@ public static partial class ExtensionsSortable_@(fullNameToBeUsed) {
                 }
                 throw new ArgumentException($"Property {propertyName} not found", propertyName);
     }
-
+    /// <summary>
+/// Performs a subsequent ordering of the elements in a sequence in ascending or descending order according to a specified property name.
+/// </summary>
+/// <param name="source">The sequence of @Model.Name objects to order.</param>
+/// <param name="propertyName">The name of the property to sort by.</param>
+/// <param name="Ascending">True to order in ascending order; false to order in descending order.</param>
+/// <returns>An IOrderedEnumerable of @Model.Name objects ordered by the specified property.</returns>
     public static System.Linq.IOrderedEnumerable<@fullName> ThenByAscDesc
     (
      this IOrderedEnumerable<@fullName> source, string propertyName, bool Ascending
@@ -71,6 +100,12 @@ public static partial class ExtensionsSortable_@(fullNameToBeUsed) {
                 }
                 throw new ArgumentException($"Property {propertyName} not found", propertyName);
     }
+    /// <summary>
+/// Performs a subsequent ordering of the elements in a sequence in ascending order according to a specified property name.
+/// </summary>
+/// <param name="source">The sequence of @Model.Name objects to order.</param>
+/// <param name="propertyName">The name of the property to sort by.</param>
+/// <returns>An IOrderedEnumerable of @Model.Name objects ordered by the specified property.</returns>
     public static System.Linq.IOrderedEnumerable<@fullName> ThenBy
     (
     this IOrderedEnumerable<@fullName>
@@ -80,6 +115,13 @@ public static partial class ExtensionsSortable_@(fullNameToBeUsed) {
 
         return ThenByAscDesc(source,propertyName,true);
     }
+    /// <summary>
+/// Performs a subsequent ordering of the elements in a sequence in descending order according to a specified property name.
+/// </summary>
+/// <param name="source">The sequence of @Model.Name objects to order.</param>
+/// <param name="propertyName">The name of the property to sort by.</param>
+/// <returns>An IOrderedEnumerable of @Model.Name objects ordered by the specified property.</returns>
+
     public static System.Linq.IOrderedEnumerable<@fullName> ThenByDescending
     (
     this IOrderedEnumerable<@fullName>
@@ -93,6 +135,11 @@ public static partial class ExtensionsSortable_@(fullNameToBeUsed) {
     #endregion 
 
 #region Queryable
+    /// Orders the elements of a sequence in ascending order according to a specified property name.
+    /// </summary>
+    /// <param name="source">The sequence of @Model.Name objects to order.</param>
+    /// <param name="propertyName">The name of the property to sort by.</param>
+    /// <returns>An IOrderedQueryable of @Model.Name objects ordered by the specified property.</returns>
     public static System.Linq.IOrderedQueryable<@fullName> OrderBy
     (
     this IQueryable<@fullName>
@@ -102,6 +149,12 @@ public static partial class ExtensionsSortable_@(fullNameToBeUsed) {
 
         return OrderByAscDesc(source,propertyName,true);
     }
+    /// <summary>
+    /// Orders the elements of a sequence in descending order according to a specified property name.
+    /// </summary>
+    /// <param name="source">The sequence of @Model.Name objects to order.</param>
+    /// <param name="propertyName">The name of the property to sort by.</param>
+    /// <returns>An IOrderedQueryable of @Model.Name objects ordered by the specified property.</returns>
         public static System.Linq.IOrderedQueryable<@fullName>
             OrderByDescending
             (
@@ -112,6 +165,15 @@ public static partial class ExtensionsSortable_@(fullNameToBeUsed) {
 
                 return OrderByAscDesc(source,propertyName,false);
                 }
+
+     /// <summary>
+    /// Orders the elements of a sequence in ascending or descending order according to a specified property name.
+    /// </summary>
+    /// <param name="source">The sequence of @Model.Name objects to order.</param>
+    /// <param name="propertyName">The name of the property to sort by.</param>
+    /// <param name="Ascending">True to order in ascending order; false to order in descending order.</param>
+    /// <returns>An IOrderedEnumerable of @Model.Name objects ordered by the specified property.</returns>
+ 
     public static System.Linq.IOrderedQueryable<@fullName> OrderByAscDesc
     (
      this IQueryable<@fullName> source, string propertyName, bool Ascending
@@ -131,6 +193,14 @@ public static partial class ExtensionsSortable_@(fullNameToBeUsed) {
                 }
                 throw new ArgumentException($"Property {propertyName} not found", propertyName);
     }
+    /// <summary>
+/// Performs a subsequent ordering of the elements in a sequence in ascending or descending order according to a specified property name.
+/// </summary>
+/// <param name="source">The sequence of @Model.Name objects to order.</param>
+/// <param name="propertyName">The name of the property to sort by.</param>
+/// <param name="ascending">True to order in ascending order; false to order in descending order.</param>
+                                                                        /// <returns>An IOrderedQueryable of @Model.Name objects ordered by the specified property.</returns>
+
     public static System.Linq.IOrderedQueryable<@fullName> ThenByAscDesc
     (
      this IOrderedQueryable<@fullName> source, string propertyName, bool Ascending
@@ -150,6 +220,13 @@ public static partial class ExtensionsSortable_@(fullNameToBeUsed) {
                 }
                 throw new ArgumentException($"Property {propertyName} not found", propertyName);
     }
+        /// <summary>
+/// Performs a subsequent ordering of the elements in a sequence in ascending order according to a specified property name.
+/// </summary>
+/// <param name="source">The sequence of @Model.Name objects to order.</param>
+/// <param name="propertyName">The name of the property to sort by.</param>
+/// <returns>An IOrderedQueryable of @Model.Name objects ordered by the specified property.</returns>
+
     public static System.Linq.IOrderedQueryable<@fullName> ThenBy
     (
     this IOrderedQueryable<@fullName>
@@ -159,6 +236,12 @@ public static partial class ExtensionsSortable_@(fullNameToBeUsed) {
 
         return ThenByAscDesc(source,propertyName,true);
     }
+        /// <summary>
+/// Performs a subsequent ordering of the elements in a sequence in ascending order according to a specified property name.
+/// </summary>
+/// <param name="source">The sequence of @Model.Name objects to order.</param>
+/// <param name="propertyName">The name of the property to sort by.</param>
+/// <returns>An IOrderedQueryable of @Model.Name objects ordered by the specified property.</returns>
     public static System.Linq.IOrderedQueryable<@fullName> ThenByDescending
     (
     this IOrderedQueryable<@fullName>
