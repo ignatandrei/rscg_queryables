@@ -10,7 +10,7 @@
 		<!--<IncludeBuildOutput>false</IncludeBuildOutput>-->
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="RSCG_NameGenerator" Version="2024.26.8.2002" >
+		<PackageReference Include="RSCG_NameGenerator" Version="2024.11.11.1830">
 			<OutputItemType>Analyzer</OutputItemType>
 			<ReferenceOutputAssembly>false</ReferenceOutputAssembly>
 		</PackageReference>
@@ -22,17 +22,17 @@
 	</PropertyGroup>
 	
 	<ItemGroup>
-		<PackageReference Include="RazorBlade" Version="0.5.0" PrivateAssets="all" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />
+		<PackageReference Include="RazorBlade" Version="0.6.0" PrivateAssets="all" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.3.4">
+		<PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.11.0">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 	
 		<PackageReference Include="System.CodeDom" PrivateAssets="all" GeneratePathProperty="true" Version="8.0.0" />
-		<PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.9.2" />
+		<PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.11.0" />
 		<None Remove="bin\Debug\netstandard2.0\\*.dll" />
 		<None Remove="SortableTemplate.cshtml" />
 		<None Include="$(OutputPath)\$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
