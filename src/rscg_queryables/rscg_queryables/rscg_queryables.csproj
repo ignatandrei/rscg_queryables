@@ -9,11 +9,18 @@
 		<EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
 		<!--<IncludeBuildOutput>false</IncludeBuildOutput>-->
 	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="RSCG_NameGenerator" Version="2024.26.8.2002" >
+			<OutputItemType>Analyzer</OutputItemType>
+			<ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+		</PackageReference>
+	</ItemGroup>
+	<!-- optional -->
 	<PropertyGroup>
-
 		<EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
 		<CompilerGeneratedFilesOutputPath>$(BaseIntermediateOutputPath)\GX</CompilerGeneratedFilesOutputPath>
 	</PropertyGroup>
+	
 	<ItemGroup>
 		<PackageReference Include="RazorBlade" Version="0.5.0" PrivateAssets="all" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />
 	</ItemGroup>
